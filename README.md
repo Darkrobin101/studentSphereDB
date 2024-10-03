@@ -22,6 +22,7 @@ The database consists of the following tables, each serving a unique role in the
 - **StudentGrades**: Contains overall grades for each course the student has completed.
 
 ### Entity-Relationship Diagram
+![Entity Relationship Diagram](Entity-Relationship-Diagram.png)
 
 
 ### Dependencies and Relationships
