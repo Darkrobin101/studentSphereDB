@@ -95,3 +95,9 @@ The StudentSphereDB system has been designed with scalability and future improve
 
 ## Final Thoughts
 The StudentSphereDB project has provided hands-on experience in database design and management, including creating relational models, implementing normalization, and handling complex relationships. It serves as a robust solution for academic institutions to efficiently manage student data and is a foundational step towards more sophisticated academic record-keeping systems.
+
+### Built With
+
+- [MySQL](https://www.mysql.com/)
+
+
