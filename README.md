@@ -46,14 +46,38 @@ All entities and relationships are normalized up to 3NF, ensuring there are no d
 To test the database, use the following sample queries:
 
 ```sql
--- Display all student details
+-- Display all student details:
 SELECT * FROM Students;
 
--- Display course information
+-- View student contact information:
+SELECT s.student_id, s.first_name, s.last_name, c.school_email, c.personal_email 
+FROM Students s 
+JOIN ContactInfo c ON s.student_id = c.student_id;
+
+-- List all available courses:
 SELECT * FROM CourseInfo;
 
--- Calculate GPA for a student
-SELECT student_id, AVG(course_grade) AS gpa FROM StudentGrades WHERE student_id = 100007;
+-- Calculate a student’s GPA:
+SELECT student_id, AVG(course_grade) AS gpa 
+FROM StudentGrades 
+WHERE student_id = 100007;
+
+-- Show student majors and minors:
+SELECT s.student_id, CONCAT(s.first_name, ' ', s.last_name) AS full_name, mj.major_name, mn.minor_name 
+FROM Students s 
+LEFT JOIN Major mj ON s.major_id = mj.major_id 
+LEFT JOIN Minor mn ON s.minor_id = mn.minor_id;
+
+-- Count students by major:
+SELECT mj.major_name, COUNT(s.student_id) AS total_students 
+FROM Students s 
+JOIN Major mj ON s.major_id = mj.major_id 
+GROUP BY mj.major_name;
+
+-- Retrieve emergency contacts for all students:
+SELECT s.student_id, CONCAT(s.first_name, ' ', s.last_name) AS student_name, ec.contact_name, ec.contact_phone 
+FROM Students s 
+JOIN EmergencyContact ec ON s.student_id = ec.student_id;
 ````
 ## Project Contributors
 This project was created by the following team members as part of the CP363 Database course:
